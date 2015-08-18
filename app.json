@@ -1,0 +1,8 @@
+{
+  "name": "CloeeZoee",
+  "description": "Un Semplice videogioco per html5",
+  "repository": "https://github.com/pietrondo/cloeezoe",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["dog","cat","html5"]
+  "image": "heroku/nodejs"
+}
