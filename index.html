@@ -118,7 +118,8 @@
           //stop the game
             gameLive = false;
 
-            alert('You\'ve won!');
+            alert('La Cloe potra\' mangiare");
+
 
             //reload page
             window.location = "";
@@ -140,7 +141,7 @@
             //stop the game
             gameLive = false;
 
-            alert('Game Over!');
+            alert('La Cloe è morta di fame!');
 
             //reload page
             window.location = "";
@@ -148,7 +149,7 @@
 
           //move enemy
           element.y += element.speedY;
-          
+        
           //check borders
           if(element.y <= 10) {
             element.y = 10;
