@@ -11,10 +11,11 @@
 </head>
 <body>
   <h1>Riuscirà la cloe a prendere il tesoro?</h1>
+  <h2 id="level">Livello 1</h2>
   <canvas id="mycanvas" width="640" height="360" ></canvas>
   <script>
     window.addEventListener("load",function() {
-      
+     var level = 1; 
       //constants
       var GAME_WIDTH = 640;
       var GAME_HEIGHT = 360;
@@ -119,7 +120,8 @@
             gameLive = false;
 
             alert("La Cloe potrà mangiare");
-	    
+	    level = level +1;
+		document.getElementById("level").innerHTML("Livello " + level);	    
 
 
             //reload page
