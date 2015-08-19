@@ -16,14 +16,14 @@
   <script>
     window.addEventListener("load",function() {
      var level = 1; 
-      //constants
+      //Costanti
       var GAME_WIDTH = 640;
       var GAME_HEIGHT = 360;
 
-      //keep the game going
+      //Il gioco è vivo
       var gameLive = true;
 
-      //enemies
+      //I nemici
       var enemies = [
         {
           x: 100, //x coordinate
@@ -55,11 +55,8 @@
         }
       ];
 
-      /*
-      CHALLENGE SOLUTION
-      */
-
-      //the player object
+      
+      
       var player = {
         x: 10,
         y: 130,
@@ -69,7 +66,7 @@
         h: 40
       };
 
-      //the goal object
+      //Il cibo
       var goal = {
         x: 530,
         y: 130,
@@ -87,11 +84,11 @@
         player.isMoving = false;
       }
       
-      //grab the canvas and context
+      //Creiamo l'ambiente
       var canvas = document.getElementById("mycanvas");
       var ctx = canvas.getContext("2d");
 
-      //event listeners to move player
+      //Muoviamo la cloe
       canvas.addEventListener('mousedown', movePlayer);
       canvas.addEventListener('mouseup', stopPlayer);   
       canvas.addEventListener('touchstart', movePlayer);
@@ -111,53 +108,52 @@
         sprites.goal.src = 'images/osso.jpg';
       };
 
-      //update the logic
+//logica del programma
       var update = function() {
 
-        //check if you've won the game
+        //controlliamo se collidiamo
         if(checkCollision(player, goal)) {
-          //stop the game
+          //stoppiamo il gioco
             gameLive = false;
 
             alert("La Cloe potrà mangiare");
 	    level = level +1;
-		document.getElementById("level").innerHTML("Livello " + level);	    
+	document.getElementById("level").innerHTML= "Livello " + level;	    
+player.x=10;
+player.y=130;
+        update();
 
-
-            //reload page
-            window.location = "";
         }
 
-        //update player
+        //aggiorniamo il giocatore
         if(player.isMoving) {
           player.x = player.x + player.speedX;
         }
 
-        //update enemies
+        //aggiorniamo nemici
         var i = 0;
         var n = enemies.length;
         
         enemies.forEach(function(element, index){
 
-          //check for collision with player
+          //controlliamo la collisione con i nemici
           if(checkCollision(player, element)) {
-            //stop the game
+            
             gameLive = false;
 
             alert('La Cloe è morta di fame!');
 
-            //reload page
+            
             window.location = "";
           }
 
-          //move enemy
+          //Muoviamo nemici
           element.y += element.speedY;
         
-          //check borders
+          //controlliamo i bordi
           if(element.y <= 10) {
             element.y = 10;
-            //element.speedY = element.speedY * -1;
-            element.speedY *= -1;
+                       element.speedY *= -1;
           }
           else if(element.y >= GAME_HEIGHT - 50) {
             element.y = GAME_HEIGHT - 50;
@@ -166,27 +162,27 @@
         });
       };
 
-      //show the game on the screen
+      //Disegna il mondo
       var draw = function() {
-        //clear the canvas
+        //Pulisce
         ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);        
 
-        //draw background
+        //background
         ctx.drawImage(sprites.background, 0, 0);
 
-        //draw player
+        //giocatore
         ctx.drawImage(sprites.player, player.x, player.y);
 
-        //draw enemies
+        //nemici
         enemies.forEach(function(element, index){
           ctx.drawImage(sprites.enemy, element.x, element.y);
         });
 
-        //draw goal
+        //cibo
         ctx.drawImage(sprites.goal, goal.x, goal.y);
       };
 
-      //gets executed multiple times per second
+      //esecuzione
       var step = function() {
 
         update();
@@ -197,7 +193,7 @@
         }     
       };
 
-      //check the collision between two rectangles
+Controlla collisione
       var checkCollision = function(rect1, rect2) {
 
         var closeOnWidth = Math.abs(rect1.x - rect2.x) <= Math.max(rect1.w, rect2.w);
@@ -205,7 +201,7 @@
         return closeOnWidth && closeOnHeight;
       }
 
-      //initial kick
+//inizio
       load();
       step();
     });
