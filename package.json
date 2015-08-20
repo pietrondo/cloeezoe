@@ -1,10 +1,10 @@
 {
   "name": "node-js-getting-started",
   "version": "0.1.4",
-  "description": "A sample Node.js app using Express 4",
+  "description": "A simple html5 game",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "ejs": "^2.3.1",
